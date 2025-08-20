@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white border-b shadow-sm fixed top-0 inset-x-0 z-50">
+  <header class="bg-white shadow-md rounded-sm fixed top-0 inset-x-0 z-50">
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
       <!-- Logo and search -->
       <div class="flex items-center space-x-4">
@@ -10,7 +10,7 @@
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Search FaceBonk..."
+            placeholder="🔍 Search "
             class="w-64 bg-gray-100 border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all duration-200"
             @keyup.enter="handleSearch"
           />

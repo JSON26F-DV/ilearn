@@ -7,5 +7,4 @@
 <script setup>
 import PostLayout from '@/layouts/PostLayout.vue';
 
-
 </script>

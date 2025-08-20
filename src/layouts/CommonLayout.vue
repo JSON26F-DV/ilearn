@@ -8,7 +8,7 @@
               <p class="font-medium text-gray-800">{{ item.title }}</p>
               <small class="text-sm text-gray-500">{{ item.date }}</small>
             </div>
-            <button :class="`bg-${color} hover:bg-${color}-600 text-white text-sm px-3 py-1 rounded-md `">Submit</button>
+            <button :class="`${color} hover:${color}-600 text-white text-sm px-3 py-1 rounded-md `">Submit</button>
           </li>
         </ul>
     </div>
@@ -28,7 +28,7 @@ import PostLayout from './PostLayout.vue';
     },
     color: {
       type: String,
-      default: 'green'
+      default: 'bg-green'
     }
   });
 </script>

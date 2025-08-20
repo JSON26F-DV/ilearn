@@ -6,26 +6,26 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'HomePage',
+      name: 'homePage',
       component: () => import('@/views/authenticated/HomePage.vue'),
       children: [
         {
-          path: '/Community',
+          path: '/community',
           name: 'CommunityPage',
           component: () => import('@/views/authenticated/CommunityPage.vue'),
         },
         {
-          path: '/Assignments',
+          path: '/assignments',
           name: 'AssignmentPage',
           component: () => import('@/views/authenticated/AssignmentPage.vue'),
         },
         {
-          path: '/Events',
+          path: '/events',
           name: 'EventPage',
           component: () => import('@/views/authenticated/EventPage.vue'),
         },
         {
-          path: '/Messenger',
+          path: '/messenger',
           name: 'MessengerPage',
           component: () => import('@/views/authenticated/MessengerPage.vue'),
         },
@@ -33,12 +33,12 @@ const router = createRouter({
     },
 
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
       component: () => import('@/views/guest/LoginPage.vue'),
     },
     {
-      path: '/Registration',
+      path: '/registration',
       name: 'Registration',
       component: () => import('@/views/guest/RegistrationPage.vue'),
     },

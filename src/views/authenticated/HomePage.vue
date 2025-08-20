@@ -81,7 +81,7 @@
                 </PostLayout>
             </div>
             <CommonLayout :props="assign" title="Assignments"></CommonLayout>
-            <CommonLayout color="blue" :props="events" title="Events"></CommonLayout>
+            <CommonLayout color="bg-blue" :props="events" title="Events"></CommonLayout>
         </div>
         <aside class="NavBar flex-[1] flex_full ">
           <RightSideBar></RightSideBar>

@@ -19,6 +19,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
             <input
               id="full-name"
               name="full-name"
+              v-model='fullname'
               type="text"
               autocomplete="name"
               required
@@ -30,6 +31,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
             <label for="email-address" class="sr-only">Email address</label>
             <input
               id="email-address"
+              v-model='email'
               name="email"
               type="email"
               autocomplete="email"
@@ -42,6 +44,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
             <label for="password" class="sr-only">Password</label>
             <input
               id="password"
+              v-model='password'
               name="password"
               type="password"
               autocomplete="new-password"
@@ -54,6 +57,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
             <label for="confirm-password" class="sr-only">Confirm password</label>
             <input
               id="confirm-password"
+              v-model='confirm'
               name="confirm-password"
               type="password"
               autocomplete="new-password"
@@ -88,3 +92,12 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
     </div>
   </AuthLayout>
 </template>
+
+<script setup>
+  import { ref } from "vue";
+  const fullname = ref('')
+  const email = ref('')
+  const password = ref('')
+  const confirm = ref('')
+
+</script>

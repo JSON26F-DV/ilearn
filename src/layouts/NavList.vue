@@ -52,7 +52,7 @@ const Navigation = [
     svg: 'i-fluent-color-calendar-24',
   },
   {
-    link: 'Messenger',
+    link: 'messenger',
     name: 'Chat',
     color: 'hover:text-cyan-500',
     svg: 'i-fluent-color-chat-more-24',
