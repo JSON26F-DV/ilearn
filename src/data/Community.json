@@ -1,0 +1,62 @@
+[
+  {
+    "logo": "🎉",
+    "title": "Study Group",
+    "content": "Join us for weekly study sessions and collaborative learning."
+  },
+  {
+    "logo": "💬",
+    "title": "Discussion Club",
+    "content": "Engage in thoughtful discussions on various topics."
+  },
+  {
+    "logo": "🤝",
+    "title": "Networking Event",
+    "content": "Connect with professionals and expand your network."
+  },
+  {
+    "logo": "🎨",
+    "title": "Art Club",
+    "content": "Explore your creativity and collaborate on art projects."
+  },
+  {
+    "logo": "🎭",
+    "title": "Drama Club",
+    "content": "Join us for theatrical performances and drama workshops."
+  },
+  {
+    "logo": "🎤",
+    "title": "Music Club",
+    "content": "Share your passion for music, collaborate on projects, and participate in jam sessions."
+  },
+  {
+    "logo": "📚",
+    "title": "Book Club",
+    "content": "Read and discuss books with fellow enthusiasts."
+  },
+  {
+    "logo": "🏃",
+    "title": "Sports Club",
+    "content": "Stay active with group sports and fitness activities."
+  },
+  {
+    "logo": "💻",
+    "title": "Coding Club",
+    "content": "Learn programming, build projects, and share knowledge."
+  },
+  {
+    "logo": "🌍",
+    "title": "Environment Club",
+    "content": "Work together on projects that help protect the planet."
+  },
+  {
+    "logo": "🍳",
+    "title": "Cooking Club",
+    "content": "Share recipes, cook together, and enjoy tasty meals."
+  },
+  {
+    "logo": "🧘",
+    "title": "Wellness Club",
+    "content": "Practice mindfulness, yoga, and self-care activities."
+  }
+]

@@ -1,0 +1,65 @@
+<!--
+  Assignments Page Template
+
+  This page provides an overview of student assignments within the educational
+  platform.  Assignments are grouped into upcoming and completed categories,
+  with key details such as due dates and progress statuses.  The layout
+  maintains consistency with the rest of the site, featuring a top navigation
+  bar, a left navigation sidebar, and a central content area.  Built using
+  Tailwind CSS.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EduConnect – Assignments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 antialiased">
+  <!-- Top Nav -->
+  <header class="bg-white border-b shadow-sm fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-4">
+        <a href="feed.html" class="text-2xl font-bold text-indigo-600">EduConnect</a>
+        <div class="hidden md:block">
+          <input type="text" placeholder="Search assignments…"
+            class="w-64 bg-gray-100 border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <button id="profile-button" class="flex items-center focus:outline-none">
+            <img
+              src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=facearea&facepad=3&w=64&h=64&q=80"
+              alt="Avatar" class="w-8 h-8 rounded-full" />
+          </button>
+          <div id="profile-dropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-2 z-10">
+            <a href="profile.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">View Profile</a>
+            <a href="#settings" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Settings</a>
+            <a href="#logout" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- JS for profile dropdown -->
+  <script>
+    const profileBtn = document.getElementById('profile-button');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    profileBtn.addEventListener('click', () => {
+      profileDropdown.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+        profileDropdown.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+
+</html>
