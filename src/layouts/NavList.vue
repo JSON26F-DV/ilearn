@@ -55,7 +55,7 @@ const Navigation = [
     link: 'Messenger',
     name: 'Chat',
     color: 'hover:text-cyan-500',
-    svg: 'i-line-md-chat-filled bg-blue-500',
+    svg: 'i-fluent-color-chat-more-24',
   },
 ]
 </script>

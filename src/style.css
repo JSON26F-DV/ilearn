@@ -7,6 +7,14 @@
 body {
   @apply 'bg-gray-100 flex flex-col items-center justify-center text-center overflow-x-hidden';
 }
+
+@media (max-width: 640px) {
+  /* phones */
+  .NavBar {
+    display: none !important;
+  }
+}
+
 .Foryoupage {
   @apply 'w-[clamp(300px,100vw,1440px)] h-auto';
 }

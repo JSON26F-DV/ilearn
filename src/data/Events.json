@@ -1,22 +1,42 @@
 [
-    {
-        "id": 1,
-        "title": "Math Assignment",
-        "date": "2023-10-01"
-    },
-    {
-        "id": 2,
-        "title": "Science Project",
-        "date": "2023-10-05"
-    },
-    {
-        "id": 3,
-        "title": "History Essay",
-        "date": "2023-10-10"
-    },
-    {
-        "id": 4,
-        "title": "Geography Presentation",
-        "date": "2023-10-15"
-    }
-  ]
+  {
+    "id": 1,
+    "title": "Math Assignment",
+    "date": "2023-10-01",
+    "logo": "➗",
+    "content": "Solve 20 algebra problems",
+    "members": 1
+  },
+  {
+    "id": 2,
+    "title": "Science Project",
+    "date": "2023-10-05",
+    "logo": "🔬",
+    "content": "Build a volcano model",
+    "members": 3
+  },
+  {
+    "id": 3,
+    "title": "History Essay",
+    "date": "2023-10-10",
+    "logo": "📜",
+    "content": "Write 2 pages on World War II",
+    "members": 1
+  },
+  {
+    "id": 4,
+    "title": "Geography Presentation",
+    "date": "2023-10-15",
+    "logo": "🌍",
+    "content": "Explain climate zones with slides",
+    "members": 2
+  },
+  {
+    "id": 5,
+    "title": "Geography Presentation",
+    "date": "2023-10-15",
+    "logo": "🌍",
+    "content": "Explain climate zones with slides",
+    "members": 2
+  }
+]

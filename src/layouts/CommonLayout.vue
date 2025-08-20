@@ -8,7 +8,7 @@
               <p class="font-medium text-gray-800">{{ item.title }}</p>
               <small class="text-sm text-gray-500">{{ item.date }}</small>
             </div>
-            <button :class="`bg-${color}-500 hover:bg-${color}-600`" class=" text-white text-sm px-3 py-1 rounded-md ">Submit</button>
+            <button :class="`bg-${color} hover:bg-${color}-600 text-white text-sm px-3 py-1 rounded-md `">Submit</button>
           </li>
         </ul>
     </div>
@@ -17,20 +17,18 @@
 
 <script setup>
 import PostLayout from './PostLayout.vue';
-
-const { props } = defineProps({
-  props: {
-    type: Array,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-  color: {
-    type: String,
-    default: 'green'
-  }
-});
-
+  defineProps({
+    props: {
+      type: Array,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: String,
+      default: 'green'
+    }
+  });
 </script>

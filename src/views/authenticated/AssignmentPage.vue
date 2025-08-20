@@ -1,53 +1,23 @@
 <template>
-  <NavigationBar></NavigationBar>
-    <div class="Foryoupage container-fluid w-screen h-screen flex_centered flex-row! gap-5 mt-20 px-5">
-      <!-- Left Navigation Sidebar -->
-      <div
-        class="h-[768px] self-start whitespace-nowrap overflow-x-hidden overflow-y-auto scrollbar scrollbar-thumb-gray-300 "
-      >
-        <SideBar></SideBar>
-      </div>
-      <!-- Main Content -->
-      <main class="flex-[2.5] flex_full flex_centered justify-start gap-5">
+ <main class="flex-1 px-4 sm:px-6 lg:px-8 py-6 space-y-8">
         <h2 class="text-2xl font-bold mb-6">Your Assignments</h2>
         <!-- Upcoming assignments -->
         <section class="bg-white rounded-lg shadow p-6">
           <h3 class="text-lg font-semibold mb-4">Upcoming Assignments</h3>
           <div class="space-y-4">
             <!-- Assignment card -->
-            <div class="flex items-start justify-between bg-gray-50 p-4 rounded-md text-start">
+            <div class="flex items-start text-start justify-between bg-gray-50 p-4 rounded-md" v-for="(assign, index) in assigns" :key="index">
               <div>
-                <h5 class="font-medium text-gray-800">Calculus Homework #3</h5>
-                <p class="text-sm text-gray-500">Mathematics – Due Aug 5, 2025</p>
-                <p class="text-sm text-gray-600 mt-1">Complete exercises 7–12 on page 143 of the textbook.</p>
+                <h5 class="font-medium text-gray-800"><strong>{{ assign.title }}</strong></h5>
+                <p class="text-sm text-gray-500">{{ assign.date }}</p>
+                <p class="text-sm text-gray-600 mt-1">{{ assign.content }}</p>
               </div>
               <div class="flex flex-col items-end space-y-2">
-                <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">In Progress</span>
+                <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">{{ assign.status }}</span>
                 <button class="bg-indigo-600 text-white text-sm px-3 py-1 rounded-md hover:bg-indigo-700">Submit</button>
               </div>
             </div>
-            <div class="flex items-start justify-between bg-gray-50 p-4 rounded-md text-start">
-              <div>
-                <h5 class="font-medium text-gray-800">Group Project Proposal</h5>
-                <p class="text-sm text-gray-500">Computer Science – Due Aug 10, 2025</p>
-                <p class="text-sm text-gray-600 mt-1">Draft the proposal for your final group project including objectives and timeline.</p>
-              </div>
-              <div class="flex flex-col items-end space-y-2">
-                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Not Started</span>
-                <button class="bg-indigo-600 text-white text-sm px-3 py-1 rounded-md hover:bg-indigo-700">Start</button>
-              </div>
-            </div>
-            <div class="flex items-start justify-between bg-gray-50 p-4 rounded-md text-start">
-              <div>
-                <h5 class="font-medium text-gray-800">Reading Response</h5>
-                <p class="text-sm text-gray-500">English Literature – Due Aug 12, 2025</p>
-                <p class="text-sm text-gray-600 mt-1">Write a 500‑word reflection on the assigned short story.</p>
-              </div>
-              <div class="flex flex-col items-end space-y-2">
-                <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">Overdue</span>
-                <button class="bg-indigo-600 text-white text-sm px-3 py-1 rounded-md hover:bg-indigo-700">Submit Late</button>
-              </div>
-            </div>
+
           </div>
         </section>
         <!-- Completed assignments -->
@@ -65,36 +35,12 @@
                 <button class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-md cursor-not-allowed" disabled>View</button>
               </div>
             </div>
-            <div class="flex items-start justify-between bg-gray-50 p-4 rounded-md  text-start">
-              <div>
-                <h5 class="font-medium text-gray-800">Essay on Climate Change</h5>
-                <p class="text-sm text-gray-500">Environmental Science – Submitted Jul 22, 2025</p>
-                <p class="text-sm text-gray-600 mt-1">A persuasive essay discussing current climate challenges and solutions.</p>
-              </div>
-              <div class="flex flex-col items-end space-y-2">
-                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Graded: 88%</span>
-                <button class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-md cursor-not-allowed" disabled>View</button>
-              </div>
-            </div>
-            <div class="flex items-start justify-between bg-gray-50 p-4 rounded-md text-start">
-              <div>
-                <h5 class="font-medium text-gray-800">Programming Assignment #2</h5>
-                <p class="text-sm text-gray-500">Programming 101 – Submitted Jul 18, 2025</p>
-                <p class="text-sm text-gray-600 mt-1">Implement a basic CRUD application using Python.</p>
-              </div>
-              <div class="flex flex-col items-end space-y-2">
-                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Graded: 92%</span>
-                <button class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-md cursor-not-allowed" disabled>View</button>
-              </div>
-            </div>
           </div>
         </section>
       </main>
-    </div>
 </template>
+
 <script setup>
-import NavigationBar from '@/components/NavigationBar.vue';
-import SideBar from '@/components/SideBar.vue';
 
-
+  import assigns from '@/data/Assignment.json'
 </script>

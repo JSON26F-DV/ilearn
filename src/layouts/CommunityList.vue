@@ -7,7 +7,6 @@
       >
       <span class="text-black-700">{{ name }}</span>
     </div>
-    <button class="text-xs text-indigo-600 hover:underline">Join</button>
   </li>
 </template>
 

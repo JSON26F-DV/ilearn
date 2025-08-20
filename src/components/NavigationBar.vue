@@ -24,19 +24,7 @@
           class="relative text-gray-600 hover:text-indigo-600 focus:outline-none transition-colors duration-200"
           @click="handleNotifications"
         >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-            />
-          </svg>
+        <Icon class="i-fluent-color-alert-48" w-6 h-6></Icon>
           <!-- Notification badge -->
           <span
             v-if="notificationCount > 0"
@@ -151,8 +139,10 @@
 </template>
 
 <script setup>
+import { Icon } from '@iconify/vue'
 import { ref, onMounted, onUnmounted } from 'vue'
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 // Reactive data
 const searchQuery = ref('')
 const isProfileDropdownOpen = ref(false)
@@ -208,7 +198,7 @@ const handleMenuClick = (action) => {
 const handleLogout = () => {
   isProfileDropdownOpen.value = false
   emit('logout-clicked')
-  console.log('Logout clicked')
+  router.push({path: '/Login'})
 }
 
 // Close dropdown when clicking outside

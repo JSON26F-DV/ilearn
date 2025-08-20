@@ -1,19 +1,32 @@
 [
-
-    {
-        "title": "Math Homework",
-        "date": "2023-09-15"
-    },
-    {
-        "title": "Science Project",
-        "date": "2023-09-22"
-    },
-    {
-        "title": "History Essay",
-        "date": "2023-09-29"
-    },
-    {
-        "title": "Geography Presentation",
-        "date": "2023-10-06"
-    }
+  {
+    "title": "Math Homework",
+    "content": "Solve 15 fractions and 5 word problems",
+    "status": "in progress",
+    "date": "2023-09-15"
+  },
+  {
+    "title": "Science Project",
+    "content": "Make a model of the solar system",
+    "status": "not started",
+    "date": "2023-09-22"
+  },
+  {
+    "title": "History Essay",
+    "content": "Write 2 pages on the Philippine Revolution",
+    "status": "not started",
+    "date": "2023-09-29"
+  },
+  {
+    "title": "Geography Presentation",
+    "content": "Explain types of landforms with slides",
+    "status": "in progress",
+    "date": "2023-10-06"
+  },
+  {
+    "title": "Art Project",
+    "content": "Draw a poster about saving trees",
+    "status": "completed",
+    "date": "2023-10-10"
+  }
 ]
