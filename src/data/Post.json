@@ -1,0 +1,9 @@
+[
+    {
+        "messages": {
+        "doc1": { "content": "my first chat" },
+        "doc2": { "content": "hello world" },
+        "doc3": { "content": "shelly" }
+        }
+    }
+]

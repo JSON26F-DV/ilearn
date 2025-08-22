@@ -92,48 +92,34 @@
               class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-10"
             >
               <div class="px-4 py-2 border-b border-gray-100">
-                <p class="text-sm font-medium text-gray-900">{{ user.name }}</p>
-                <p class="text-xs text-gray-500">{{ user.email }}</p>
+                <p class="text-sm e font-medium text-gray-900">{{ user.name }}</p>
+                <small class="text-xs text-gray-500">{{ user.email }}</small>
               </div>
 
-              <a
+              <a v-for="(toggle, index) in toggled" :key="index"
                 href="#profile"
                 @click="handleMenuClick('profile')"
                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
               >
-                <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                View Profile
+                <Icon :class="`${toggle.logo} w-5 h-5 mr-2`"></Icon>
+                {{toggle.name }}
               </a>
 
-              <a
-                href="#settings"
-                @click="handleMenuClick('settings')"
-                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-              >
-                <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                Settings
-              </a>
 
               <hr class="my-2 border-gray-100">
 
               <button
-                @click="handleLogout"
+                @click="handlerSignOut"
                 class="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
               >
-                <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
+                <Icon class="i-mdi-logout w-5 h-5 mr-2"></Icon>
                 Log Out
               </button>
             </div>
           </Transition>
         </div>
       </div>
+
     </div>
   </header>
 </template>
@@ -141,14 +127,54 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
+
+
+
+const toggled = [
+  {logo: "i-fluent-color-person-32", name: "View Profile", link: "/profile"},
+  {logo: "i-fluent-color-settings-32", name: "Settings", link: "/setting"},
+]
+
+const isLoggedIn = ref(false)
+
+let auth
+onMounted(() => {
+  auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true
+    } else {
+      isLoggedIn.value = false
+    }
+  })
+})
+
+
 // Reactive data
 const searchQuery = ref('')
 const isProfileDropdownOpen = ref(false)
 const notificationCount = ref(4)
 const messageCount = ref(2)
 const profileDropdown = ref(null)
+
+
+//Log Out
+async function handlerSignOut() {
+  isProfileDropdownOpen.value = false
+  emit('logout-clicked')
+  try {
+    await signOut(auth)
+    router.push('/login')
+    console.log(auth.currentUser)
+  } catch (error) {
+    alert('Something went wrong' + error)
+  }
+}
+
 
 // User data
 const user = ref({
@@ -167,18 +193,15 @@ const emit = defineEmits([
   'logout-clicked'
 ])
 
+
 // Methods
-const handleSearch = () => {
+function handleSearch() {
   if (searchQuery.value.trim()) {
     emit('search', searchQuery.value)
     console.log('Searching for:', searchQuery.value)
   }
 }
 
-const handleNotifications = () => {
-  emit('notifications-clicked')
-  console.log('Notifications clicked')
-}
 
 const toggleMobileChat = () => {
   emit('mobile-chat-toggled')
@@ -193,12 +216,6 @@ const handleMenuClick = (action) => {
   isProfileDropdownOpen.value = false
   emit(`${action}-clicked`)
   console.log(`${action} clicked`)
-}
-
-const handleLogout = () => {
-  isProfileDropdownOpen.value = false
-  emit('logout-clicked')
-  router.push({path: '/Login'})
 }
 
 // Close dropdown when clicking outside

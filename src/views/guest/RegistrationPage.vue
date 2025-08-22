@@ -1,7 +1,3 @@
-<script setup>
-import AuthLayout from '@/layouts/AuthLayout.vue'
-</script>
-
 <template>
   <AuthLayout>
     <div class="max-w-md w-full space-y-8">
@@ -9,10 +5,10 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           Already have an account?
-          <a href="login.html" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+          <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
         </p>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form class="mt-8 space-y-6" @submit.prevent="register" method="POST">
         <div class="rounded-md shadow-sm space-y-4">
           <div>
             <label for="full-name" class="sr-only">Full name</label>
@@ -83,9 +79,17 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
         <div>
           <button
             type="submit"
+            v-if="!isRegistering"
             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Register
+          </button>
+          <button
+            type="submit"
+            v-if="isRegistering"
+            class="animate-pulse group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Register...
           </button>
         </div>
       </form>
@@ -94,10 +98,43 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
 </template>
 
 <script setup>
-  import { ref } from "vue";
+import AuthLayout from '@/layouts/AuthLayout.vue'
+
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { useRouter } from 'vue-router'
+import { ref } from "vue";
   const fullname = ref('')
   const email = ref('')
   const password = ref('')
   const confirm = ref('')
 
+const isRegistering = ref(false)
+
+const router = useRouter()
+
+const credentials = [email, password, fullname, confirm]
+
+async function register() {
+  try {
+    const auth = getAuth()
+    if(password.value !== confirm.value){
+      alert("Password do not match");
+      return;
+    }
+
+    if (credentials.every((cred) => cred.value.trim() !== '')) {
+      isRegistering.value = true
+      await createUserWithEmailAndPassword(auth, email.value, password.value)
+      alert('Register Successfully!')
+      router.push('/login')
+    } else {
+      alert('Please Fill up all credentials')
+      return
+    }
+  } catch (error) {
+    alert('Error: ' + error.message)
+  } finally {
+    isRegistering.value = false
+  }
+}
 </script>

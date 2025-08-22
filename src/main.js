@@ -9,23 +9,27 @@ import './style.css'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 
+import { getFirestore } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyBju6mqMsZ7gg7JNZiGPX12MJiYuUOKHsI',
-  authDomain: 'educ-ilearn.firebaseapp.com',
-  projectId: 'educ-ilearn',
-  storageBucket: 'educ-ilearn.firebasestorage.app',
-  messagingSenderId: '452064070144',
-  appId: '1:452064070144:web:70e5f656ed624d201b26e5',
-  measurementId: 'G-8ZBGVYLV6C',
+  apiKey: 'AIzaSyDC5fV4OIyoGNLaKDWBNNeICUVdKtJgcvA',
+  authDomain: 'educ-lms.firebaseapp.com',
+  databaseURL: 'https://educ-lms-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'educ-lms',
+  storageBucket: 'educ-lms.firebasestorage.app',
+  messagingSenderId: '660361883982',
+  appId: '1:660361883982:web:8613b960481a6a98fdee1f',
+  measurementId: 'G-PFD1P0E90N',
 }
 
 // Initialize Firebase
-initializeApp(firebaseConfig)
+const appFirebase = initializeApp(firebaseConfig)
+
+export const db = getFirestore(appFirebase)
 
 const app = createApp(App)
 

@@ -1,6 +1,7 @@
 <template>
   <PostLayout class="flex_centered flex_full">
-    <h1>hello</h1>
+    <h1 class="text-red">Error 404</h1>
+    <h3>oops! Page not Found</h3>
   </PostLayout>
 </template>
 

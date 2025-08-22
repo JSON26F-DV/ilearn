@@ -10,7 +10,7 @@
     flex=""
     class="flex-[3] flex_full flex_centered flex-row justify-start items-start h-auto overflow-hidden">
       <router-view></router-view>
-      <template v-if="router.name === 'HomePage'">
+      <template v-if="router.path === '/'">
         <div class="content flex_full flex_centered" flex="[2]" gap-4>
             <PostLayout>
               <form @submit.prevent="UserPost" method="get">
@@ -54,7 +54,7 @@
               </div>
               </form>
             </PostLayout>
-            <div v-for="(text,index) in array" :key="index" class="User_Post">
+            <div v-for="(text,index) in posts" :key="index" class="User_Post">
                 <PostLayout>
                   <div class="card-title ">
                     <div class="flex space-x-4 items-center">
@@ -69,7 +69,7 @@
                     </div>
                   </div>
                   <div class="card-body flex items-start ">
-                    {{ text }}
+                    {{ text.content }}
                   </div>
                   <div class="card-footer">
                     <span class="flex justify-evenly border-(y-1px gray-300 solid) py-2 ">
@@ -108,40 +108,50 @@
   import assign from '@/data/Assignment.json';
   import events from '@/data/Events.json';
   import RightSideBar from '@/components/RightSideBar.vue';
-  import { ref } from 'vue';
 
-  const content = ref('');
-  const array = ref([])
 
-  function UserPost(){
-    if(content.value.trim()!==""){
-      array.value.unshift(content.value);
-      content.value = "";
-    }else{
-      alert('No Content')
-    }
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "@/main.js";
+import { reactive, ref } from "vue";
+
+const posts = reactive([]);
+const content = ref('')
+
+// Load existing posts
+async function loadPosts() {
+  try {
+    const querySnapshot = await getDocs(collection(db, "post"));
+    posts.splice(0);
+
+    querySnapshot.forEach((doc) => {
+    posts.push({ id: doc.id, ...doc.data() });
+  });
+  }catch(error){
+    alert("something seems off" + error)
   }
+}
 
-  // const posts = reactive(
-  //   [
-  //     {
-  //       user: "Jason",
-  //       time: "5",
-  //       content: "hello world"
-  //     },
-  //     {
-  //       user: "shelly",
-  //       time: "5",
-  //       content: "jason Love Shelly"
-  //     },
-  //     {
-  //       user: "Jason",
-  //       time: "6",
-  //       content: "Shannel mapag mahal"
-  //     }
-  //   ]
-  // )
+async function UserPost(){
+  try {
+    if(content.value.trim() === ''){
+      alert("no content")
+      return
+    }
+    const createPost = await addDoc(collection(db, "post"),{
+      content: content.value
+    })
+      posts.unshift({
+      id: createPost.id,
+      content: content.value
+    })
+  }catch(error){
+    alert('omg' + error)
+  }finally{
+    content.value = ''
+  }
+}
 
+loadPosts();
 
 </script>
 
