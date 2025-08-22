@@ -16,7 +16,7 @@ import { Icon } from '@iconify/vue'
 
 const Navigation = [
   {
-    link: '/',
+    link: 'profile',
     name: 'Jason Begornia',
     color: 'hover:text-blue-500',
     svg: 'i-fluent-color-person-starburst-32',

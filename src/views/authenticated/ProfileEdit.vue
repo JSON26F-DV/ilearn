@@ -1,26 +1,5 @@
-<!--
-  Profile Page Template
-
-  This page displays a student's personal profile with a cover photo, avatar,
-  basic information, an about section, recent posts, and a list of friends.
-  The layout reuses the same navigation structure and is built solely with
-  Tailwind CSS utility classes.
--->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EduConnect - Profile</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100 text-gray-800 antialiased">
-  <!-- Top Navigation -->
-
-  <!-- Main Profile Content -->
-  <main class="flex-1 px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+<template>
+   <main class="flex-1 px-4 sm:px-6 lg:px-8 py-6 space-y-8">
     <!-- Cover & Basic Info -->
     <div class="bg-white rounded-lg shadow overflow-hidden">
       <div class="h-40 bg-indigo-600 relative">
@@ -34,7 +13,7 @@
             src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=facearea&facepad=3&w=64&h=64&q=80"
             alt="Avatar" class="w-20 h-20 rounded-full border-4 border-white" />
           <div class="text-white">
-            <h2 class="text-2xl font-bold">Alex Johnson</h2>
+            <h3 class="text-2xl font-bold">Jason Begornia</h3>
             <p class="text-sm">Computer Science – Class of 2026</p>
           </div>
         </div>
@@ -49,7 +28,7 @@
     </div>
     <!-- About Section -->
     <section class="bg-white rounded-lg shadow p-6">
-      <h3 class="text-lg font-semibold mb-4">About</h3>
+      <h4 class="text-lg font-semibold mb-4">About</h4>
       <p class="text-gray-700 mb-4">
         I’m a third‑year computer science student passionate about artificial
         intelligence and machine learning. In my spare time I enjoy
@@ -76,7 +55,7 @@
     </section>
     <!-- Recent Posts -->
     <section class="bg-white rounded-lg shadow p-6 space-y-6">
-      <h3 class="text-lg font-semibold">Recent Posts</h3>
+      <h4 class="text-lg font-semibold">Recent Posts</h4>
       <!-- Post item -->
       <div class="border-t pt-4 first:border-t-0 first:pt-0">
         <div class="flex items-start space-x-3">
@@ -165,7 +144,7 @@
     </section>
     <!-- Friends Section -->
     <section class="bg-white rounded-lg shadow p-6">
-      <h3 class="text-lg font-semibold mb-4">Friends</h3>
+      <h4 class="text-lg font-semibold mb-4">Friends</h4>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <!-- Friend card -->
         <div class="flex flex-col items-center text-center">
@@ -199,19 +178,4 @@
       </div>
     </section>
   </main>
-  </div>
-  <script>
-    const profileBtn = document.getElementById('profile-button');
-    const profileDropdown = document.getElementById('profile-dropdown');
-    profileBtn.addEventListener('click', () => {
-      profileDropdown.classList.toggle('hidden');
-    });
-    document.addEventListener('click', (e) => {
-      if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-        profileDropdown.classList.add('hidden');
-      }
-    });
-  </script>
-</body>
-
-</html>
+</template>
